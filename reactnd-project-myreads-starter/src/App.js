@@ -19,8 +19,8 @@ class BooksApp extends React.Component {
     super(props);
     this.state = {
       showSearchPage: false,
-      allBookData: BooksAPI.getAll(),
-      bookList: []
+      allBookData: BooksAPI.getAll().then(data => data),
+      bookList: [1, 2, 3]
     };
     this.openSearch = this.openSearch.bind(this);
   }
@@ -29,10 +29,22 @@ class BooksApp extends React.Component {
     this.setState({ showSearchPage: true });
   }
 
-  render() {
-    this.state.allBookData.then(function(res) {
-      this.setState({ bookList: [1, 23, 32] });
+  getReading() {
+    this.state.allBookData.then(json => {
+      this.setState({
+        bookList: json
+      });
     });
+  }
+  render() {
+    // this.state.allBookData.then(json => {
+    //   this.setState({
+    //     bookList: json
+    //   });
+    // });
+
+    console.log(this.state.allBookData);
+
     return (
       <div className="app">
         {this.state.showSearchPage ? (
@@ -71,8 +83,8 @@ class BooksApp extends React.Component {
                   title={"Currently Reading"}
                   data={this.state.bookList}
                 />
-                <BookShelf title={"Want to Read"} />
-                <BookShelf title={"Read"} />
+                <BookShelf title={"Want to Read"} data={this.state.bookList} />
+                <BookShelf title={"Read"} data={this.state.bookList} />
               </div>
             </div>
             <OpenSearch openSearch={this.openSearch} />
