@@ -24,7 +24,11 @@ class BookShelf extends React.Component {
                 }}
               />
               <div className="book-shelf-changer">
-                <select value="read" id={item.id} onChange={this.handleChange}>
+                <select
+                  value={this.props.value}
+                  id={item.id}
+                  onChange={this.handleChange}
+                >
                   <option value="none" disabled>
                     Move to...
                   </option>

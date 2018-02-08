@@ -69,12 +69,18 @@ class BooksApp extends React.Component {
                 <BookShelf
                   title={"Currently Reading"}
                   data={this.state.currentBookList}
+                  value={"currentlyReading"}
                 />
                 <BookShelf
                   title={"Want to Read"}
                   data={this.state.wantBookList}
+                  value={"wantToRead"}
                 />
-                <BookShelf title={"Read"} data={this.state.readBookList} />
+                <BookShelf
+                  title={"Read"}
+                  data={this.state.readBookList}
+                  value={"read"}
+                />
               </div>
             </div>
             <OpenSearch openSearch={this.openSearch} />
