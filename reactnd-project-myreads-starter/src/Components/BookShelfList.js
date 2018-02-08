@@ -2,8 +2,11 @@ import React from "react";
 
 class BookShelfList extends React.Component {
   render() {
+    const data = this.props.item;
+    console.log(data);
+
     return (
-      <li>
+      <li key={data.id}>
         <div className="book">
           <div className="book-top">
             <div

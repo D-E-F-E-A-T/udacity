@@ -5,22 +5,13 @@ import OpenSearch from "./Components/OpenSearch";
 import BookShelf from "./Components/BookShelf";
 
 class BooksApp extends React.Component {
-  // state = {
-  //   /**
-  //    * TODO: Instead of using this state variable to keep track of which page
-  //    * we're on, use the URL in the browser's address bar. This will ensure that
-  //    * users can use the browser's back and forward buttons to navigate between
-  //    * pages, as well as provide a good URL they can bookmark and share.
-  //    */
-  //   showSearchPage: false
-  // };
-
   constructor(props) {
     super(props);
     this.state = {
       showSearchPage: false,
-      allBookData: BooksAPI.getAll().then(data => data),
-      bookList: [1, 2, 3]
+      readBookList: [],
+      wantBookList: [],
+      currentBookList: []
     };
     this.openSearch = this.openSearch.bind(this);
   }
@@ -29,22 +20,18 @@ class BooksApp extends React.Component {
     this.setState({ showSearchPage: true });
   }
 
-  getReading() {
-    this.state.allBookData.then(json => {
+  componentDidMount() {
+    //组件挂载时候获取数据
+    BooksAPI.getAll().then(data => {
       this.setState({
-        bookList: json
+        currentBookList: data.filter(item => item.shelf === "currentlyReading"),
+        wantBookList: data.filter(item => item.shelf === "wantToRead"),
+        readBookList: data.filter(item => item.shelf === "read")
       });
     });
   }
+
   render() {
-    // this.state.allBookData.then(json => {
-    //   this.setState({
-    //     bookList: json
-    //   });
-    // });
-
-    console.log(this.state.allBookData);
-
     return (
       <div className="app">
         {this.state.showSearchPage ? (
@@ -81,10 +68,13 @@ class BooksApp extends React.Component {
               <div>
                 <BookShelf
                   title={"Currently Reading"}
-                  data={this.state.bookList}
+                  data={this.state.currentBookList}
                 />
-                <BookShelf title={"Want to Read"} data={this.state.bookList} />
-                <BookShelf title={"Read"} data={this.state.bookList} />
+                <BookShelf
+                  title={"Want to Read"}
+                  data={this.state.wantBookList}
+                />
+                <BookShelf title={"Read"} data={this.state.readBookList} />
               </div>
             </div>
             <OpenSearch openSearch={this.openSearch} />

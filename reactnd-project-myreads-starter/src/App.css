@@ -42,7 +42,10 @@ body,
 
 .bookshelf-title {
   border-bottom: 1px solid #dedede;
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: normal;
+  margin: 10px;
+  line-height: 1.7em;
 }
 .bookshelf-books {
   text-align: center;
@@ -171,6 +174,7 @@ body,
 .book-cover {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   background: #eee;
+  overflow: hidden;
 }
 .book-cover-title {
   padding: 20px 10px 0;
