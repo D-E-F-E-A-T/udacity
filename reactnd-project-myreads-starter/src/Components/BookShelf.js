@@ -1,7 +1,12 @@
 import React from "react";
-// import BookShelfList from "./BookShelfList";
+import * as BooksAPI from "../BooksAPI";
 
 class BookShelf extends React.Component {
+  handleChange(event) {
+    BooksAPI.update({ id: event.target.id }, event.target.value).then(data => {
+      console.log(data);
+    });
+  }
   render() {
     const data = this.props.data;
     const listItems = data.map((item, index) => {
@@ -19,7 +24,7 @@ class BookShelf extends React.Component {
                 }}
               />
               <div className="book-shelf-changer">
-                <select>
+                <select value="read" id={item.id} onChange={this.handleChange}>
                   <option value="none" disabled>
                     Move to...
                   </option>
