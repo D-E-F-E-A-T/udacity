@@ -4,6 +4,11 @@ This is the starter template for the final assessment project for Udacity's Reac
 
 Of course, you are free to start this project from scratch if you wish! Just be sure to use [Create React App](https://github.com/facebookincubator/create-react-app) to bootstrap the project.
 
+## 未完成功能
+
+* [ ] 更改图书当前状态刷新
+* [ ] 搜索图书
+
 ## TL;DR
 
 To get started developing right away:
@@ -12,6 +17,7 @@ To get started developing right away:
 * start the development server with `npm start`
 
 ## What You're Getting
+
 ```bash
 ├── CONTRIBUTING.md
 ├── README.md - This file.
@@ -48,7 +54,7 @@ To simplify your development process, we've provided a backend server for you to
 Method Signature:
 
 ```js
-getAll()
+getAll();
 ```
 
 * Returns a Promise which resolves to a JSON object containing a collection of book objects.
@@ -59,11 +65,11 @@ getAll()
 Method Signature:
 
 ```js
-update(book, shelf)
+update(book, shelf);
 ```
 
 * book: `<Object>` containing at minimum an `id` attribute
-* shelf: `<String>` contains one of ["wantToRead", "currentlyReading", "read"]  
+* shelf: `<String>` contains one of ["wantToRead", "currentlyReading", "read"]
 * Returns a Promise which resolves to a JSON object containing the response data of the POST request
 
 ### `search`
@@ -71,7 +77,7 @@ update(book, shelf)
 Method Signature:
 
 ```js
-search(query)
+search(query);
 ```
 
 * query: `<String>`
@@ -79,6 +85,7 @@ search(query)
 * These books do not know which shelf they are on. They are raw results only. You'll need to make sure that books have the correct state while on the search page.
 
 ## Important
+
 The backend API uses a fixed set of cached search results and is limited to a particular set of search terms, which can be found in [SEARCH_TERMS.md](SEARCH_TERMS.md). That list of terms are the _only_ terms that will work with the backend, so don't be surprised if your searches for Basket Weaving or Bubble Wrap don't come back with any results.
 
 ## Create React App
