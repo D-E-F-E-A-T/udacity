@@ -6,7 +6,7 @@ Of course, you are free to start this project from scratch if you wish! Just be 
 
 ## 未完成功能
 
-* [ ] 更改图书当前状态刷新
+* [ ] 更改图书状态刷新页面
 * [ ] 搜索图书
 
 ## TL;DR
